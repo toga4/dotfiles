@@ -15,7 +15,7 @@ PROMPT="${BLUE}%n${RESET}@%U%m%u%# "
 RPROMPT="${GREEN}%~${RESET} [${RED}%?${RESET}][%D %T]"
 
 # alias ----------------------------------------------------------------
-alias ls='ls -aGFh'
+alias ls='ls -AGFh'
 alias ll='ls -l'
 
 alias du="du -h"
@@ -24,6 +24,10 @@ alias df="df -h"
 alias psa='ps aux'
 
 alias less='less -r'
+
+# key binding ----------------------------------------------------------
+bindkey "\e[Z" reverse-menu-complete # 逆補完
+bindkey "^[[3~" delete-char
 
 # 補完 -----------------------------------------------------------------
 autoload -U compinit;
@@ -45,6 +49,9 @@ zstyle ':completion:*:options' description 'yes'
 
 # マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
+
+# 今いるディレクトリを補完候補から外す
+zstyle ':completion:*' ignore-parents parent pwd ..
 
 # option ---------------------------------------------------------------
 # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
@@ -107,3 +114,7 @@ setopt noautoremoveslash
 
 # beepを鳴らさないようにする
 setopt nolistbeep
+
+# .zshrc.local ---------------------------------------------------------
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
