@@ -117,4 +117,5 @@ setopt nolistbeep
 
 # .zshrc.local ---------------------------------------------------------
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -f ~/.zshrc.tmux ] && source ~/.zshrc.tmux
 
