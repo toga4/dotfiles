@@ -32,6 +32,7 @@ bindkey "\e[Z" reverse-menu-complete # 逆補完
 bindkey "^[[3~" delete-char
 
 # 補完 -----------------------------------------------------------------
+fpath=(~/.zsh-completions/src $fpath)
 autoload -U compinit;
 compinit
 
@@ -76,6 +77,7 @@ setopt brace_ccl # {a-c} を a b c に展開する機能を使えるようにす
 setopt auto_menu # 補完キー（Tab,  Ctrl+I) を連打するだけで順に補完候補を自動で補完する
 setopt noautoremoveslash # 最後がディレクトリ名で終わっている場合末尾の / を自動的に取り除かない
 setopt mark_dirs # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
+setopt complete_aliases # aliasでも補完する
 
 # sudoも補完の対象
 #zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
