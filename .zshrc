@@ -17,8 +17,19 @@ PROMPT="${BLUE}%n${RESET}@%U%m%u%# "
 RPROMPT="${GREEN}%~${RESET} [${RED}%?${RESET}][%D %T]"
 
 # alias ----------------------------------------------------------------
-alias ls='ls -AGFh'
+case ${OSTYPE} in
+  darwin*)
+    alias ls='ls -AGFh'
+    ;;
+  linux*)
+    alias ls='ls -AFh --color'
+    ;;
+esac
 alias ll='ls -l'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 alias du="du -h"
 alias df="df -h"
