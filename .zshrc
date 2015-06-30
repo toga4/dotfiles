@@ -38,6 +38,12 @@ alias psa='ps aux'
 
 alias less='less -r'
 
+if [[ -x `which colordiff` ]];then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+
 # key binding ----------------------------------------------------------
 bindkey "\e[Z" reverse-menu-complete # 逆補完
 bindkey "^[[3~" delete-char
