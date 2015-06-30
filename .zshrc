@@ -1,4 +1,5 @@
 export EDITOR='vim'
+export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
 
 # prompt ---------------------------------------------------------------
 autoload -Uz colors
@@ -35,8 +36,6 @@ alias du="du -h"
 alias df="df -h"
 
 alias psa='ps aux'
-
-alias less='less -r'
 
 if [[ -x `which colordiff` ]];then
   alias diff='colordiff -u'
