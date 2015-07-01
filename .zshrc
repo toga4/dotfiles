@@ -50,8 +50,8 @@ bindkey -e
 bindkey "^[[Z" reverse-menu-complete # 逆補完
 bindkey "^[[3~" delete-char
 
-bindkey "^[^[[D" backward-word # Alt+←
-bindkey "^[^[[C" forward-word # Alt+→
+bindkey "^[^[[D" backward-word # Alt + <-
+bindkey "^[^[[C" forward-word # Alt + ->
 
 # word移動の区切り文字を設定 -------------------------------------------
 autoload -Uz select-word-style
