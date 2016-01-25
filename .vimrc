@@ -36,3 +36,8 @@ set autoread        " 他で書き換えられたら自動で再読み込み
 " 現在行ハイライトの色指定
 highlight clear CursorLine
 highlight CursorLine ctermbg=Black
+
+" バックアップファイル
+set backupdir=~/.vim/tmp
+set undodir=~/.vim/undo
+

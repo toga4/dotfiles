@@ -22,7 +22,7 @@ case ${OSTYPE} in
   darwin*)
     alias ls='ls -AGFh'
     ;;
-  linux*)
+  linux*|cygwin*)
     alias ls='ls -AFh --color'
     ;;
 esac
@@ -62,7 +62,7 @@ zstyle ':zle:*' word-style unspecified
 # 補完 -----------------------------------------------------------------
 fpath=(~/.zsh-completions/src $fpath)
 autoload -U compinit;
-compinit
+compinit -u
 
 # 大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -106,6 +106,7 @@ setopt auto_menu # 補完キー（Tab,  Ctrl+I) を連打するだけで順に�
 setopt noautoremoveslash # 最後がディレクトリ名で終わっている場合末尾の / を自動的に取り除かない
 setopt mark_dirs # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 setopt complete_aliases # aliasでも補完する
+setopt ignoreeof # Ctrl+Dでログアウトしない(10回連続で打つとログアウトする)
 
 # sudoも補完の対象
 #zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
