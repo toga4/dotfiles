@@ -84,51 +84,60 @@ zstyle ':completion:*' group-name ''
 # 今いるディレクトリを補完候補から外す
 zstyle ':completion:*' ignore-parents parent pwd ..
 
-# option ---------------------------------------------------------------
-setopt nolistbeep # beepを鳴らさないようにする
-setopt multios # 複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
-setopt auto_cd # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
-setopt auto_pushd # 自動的にpushdする 
-setopt pushd_ignore_dups # ディレクトリスタックに同じディレクトリを追加しないようになる
-setopt correct # コマンドのスペルチェックをする
-setopt correct_all # コマンドライン全てのスペルチェックをする 
-setopt no_clobber # 上書きリダイレクトの禁止
-setopt list_packed # 補完候補リストを詰めて表示
-setopt list_types # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
-setopt auto_list # 補完候補が複数ある時に、一覧表示する
-setopt magic_equal_subst # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
-setopt auto_param_keys # カッコの対応などを自動的に補完する
-setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-setopt extended_glob # glob拡張
-setopt globdots # 明確なドットの指定なしで.から始まるファイルをマッチ
-setopt brace_ccl # {a-c} を a b c に展開する機能を使えるようにする
-setopt auto_menu # 補完キー（Tab,  Ctrl+I) を連打するだけで順に補完候補を自動で補完する
-setopt noautoremoveslash # 最後がディレクトリ名で終わっている場合末尾の / を自動的に取り除かない
-setopt mark_dirs # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
-setopt complete_aliases # aliasでも補完する
-setopt ignoreeof # Ctrl+Dでログアウトしない(10回連続で打つとログアウトする)
-
 # sudoも補完の対象
 #zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 # 色付きで補完する
 zstyle ':completion:*' list-colors di=34 fi=0
 
-# history --------------------------------------------------------------
+# 履歴 -----------------------------------------------------------------
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
 
-setopt share_history # 履歴を共有する
-setopt hist_ignore_dups # 重複を記録しない
-setopt hist_ignore_all_dups # 重複するコマンドは古いものを削除する
-setopt append_history # 複数のzshを同時に使用した際に履歴ファイルを上書きせず追加する
-setopt hist_verify # ヒストリを呼び出してから実行する間に一旦編集できる状態になる
-setopt hist_save_no_dups # ファイルに書き出すとき古いコマンドと同じなら無視
-setopt hist_no_store # historyコマンドは履歴に追加しない
-
 # 全履歴表示
 function history-all { history -E 1 }
+
+# Options : Changing Directories ---------------------------------------
+setopt   auto_cd # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
+setopt   auto_pushd # 自動的にpushdする 
+setopt   pushd_ignore_dups # ディレクトリスタックに同じディレクトリを追加しないようになる
+
+# Options : Completions ------------------------------------------------
+setopt   auto_list # 補完候補が複数ある時に、一覧表示する
+setopt   auto_menu # 補完キー（Tab,  Ctrl+I) を連打するだけで順に補完候補を自動で補完する
+setopt   auto_param_keys # カッコの対応などを自動的に補完する
+setopt   auto_param_slash # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+unsetopt auto_remove_slash # 最後がディレクトリ名で終わっている場合末尾の / を自動的に取り除かない
+setopt   complete_aliases # aliasでも補完する
+unsetopt list_beep # beepを鳴らさないようにする
+setopt   list_packed # 補完候補リストを詰めて表示
+setopt   list_types # auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
+
+# Options : Expansion and Globbing -------------------------------------
+setopt   brace_ccl # {a-c} を a b c に展開する機能を使えるようにする
+setopt   extended_glob # glob拡張
+setopt   globdots # 明確なドットの指定なしで.から始まるファイルをマッチ
+setopt   magic_equal_subst # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
+setopt   mark_dirs # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
+
+# Options : History ----------------------------------------------------
+setopt   append_history # 複数のzshを同時に使用した際に履歴ファイルを上書きせず追加する
+setopt   hist_ignore_all_dups # 重複するコマンドは古いものを削除する
+setopt   hist_ignore_dups # 重複を記録しない
+setopt   hist_no_store # historyコマンドは履歴に追加しない
+setopt   hist_save_no_dups # ファイルに書き出すとき古いコマンドと同じなら無視
+setopt   hist_verify # ヒストリを呼び出してから実行する間に一旦編集できる状態になる
+setopt   share_history # 履歴を共有する
+
+# Options : Input/Output -----------------------------------------------
+unsetopt clobber # 上書きリダイレクトの禁止
+setopt   correct # コマンドのスペルチェックをする
+setopt   correct_all # コマンドライン全てのスペルチェックをする 
+setopt   ignore_eof # Ctrl+Dでログアウトしない(10回連続で打つとログアウトする)
+
+# Options : Scripts and Functions --------------------------------------
+setopt   multios # 複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
 
 # 略語展開 -------------------------------------------------------------
 # vimのiabみたいな略語展開をする
@@ -181,6 +190,11 @@ function color_maven() {
 }
 
 alias mvn='color_maven'
+
+# functions
+function showoptions() {
+  set -o | sed -e 's/^no\(.*\)on$/\1  off/' -e 's/^no\(.*\)off$/\1  on/'
+}
 
 # .zshrc.local ---------------------------------------------------------
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
