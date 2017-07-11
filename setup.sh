@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOT_FILES=( .zshrc .tmux.conf )
+DOT_FILES=( .zshrc .zshrc.tmux .tmux.conf .tmux.conf.osx .tmux.conf.others .vimrc )
 
 for file in ${DOT_FILES[@]}
 do
