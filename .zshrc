@@ -122,6 +122,7 @@ setopt   magic_equal_subst # コマンドラインの引数で --prefix=/usr な
 setopt   mark_dirs # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 
 # Options : History ----------------------------------------------------
+setopt   no_flow_control # C-sでフロー制御しないようにする
 setopt   append_history # 複数のzshを同時に使用した際に履歴ファイルを上書きせず追加する
 setopt   hist_ignore_all_dups # 重複するコマンドは古いものを削除する
 setopt   hist_ignore_dups # 重複を記録しない
