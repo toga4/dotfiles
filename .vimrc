@@ -17,6 +17,8 @@ set tabstop=4       " Tabの表示幅はスペース4つ分
 set nowrap          " 長い行を折り返さない
 set ruler           " いま位置をステータスに表示
 set showmode        " 現在のモードを表示
+set showcmd         " 入力中のコマンドをステータスに表示する
+set visualbell      " beep音を可視化
 
 " 検索系
 set incsearch       " インクリメンタルサーチ
@@ -40,4 +42,4 @@ highlight CursorLine ctermbg=Black
 " バックアップファイル
 set backupdir=~/.vim/tmp
 set undodir=~/.vim/undo
-
+set viminfo+=n~/.vim/viminfo
