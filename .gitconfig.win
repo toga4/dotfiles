@@ -1,0 +1,17 @@
+[diff]
+    tool = WinMerge
+
+[difftool "WinMerge"]
+    path = C:/Software/WinMerge/WinMergeU.exe
+    cmd = \"C:/Software/WinMerge/WinMergeU.exe\" -f \"*.*\" -e -r -u -x -wl -wr -dl \"a/$MERGED\" -dr \"b/$MERGED\" \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+    tool = WinMerge
+
+[mergetool "WinMerge"]
+    path = C:/Software/WinMerge/WinMergeU.exe
+    cmd = \"C:/Software/WinMerge/WinMergeU.exe\" -e -u -fm -wl -wr -dl \"Mine File\" -dm \"Merge Result\" -dr \"Theirs File\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -o \"$MERGED\"
+
+[alias]
+    diffwm = difftool -y -d -t WinMerge
+    mergewm = mergetool -y -t WinMerge
