@@ -22,7 +22,7 @@ case ${OSTYPE} in
   darwin*)
     alias ls='ls -AGFh'
     ;;
-  linux*|cygwin*)
+  linux*|cygwin*|msys*)
     alias ls='ls -AFh --color'
     ;;
 esac
