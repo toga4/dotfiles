@@ -1,11 +1,10 @@
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
 
-# prompt ---------------------------------------------------------------
+# prompt colors --------------------------------------------------------
 autoload -Uz colors
 colors
 
-# COLORS
 RESET="%{${reset_color}%}"
 GREEN="%{${fg[green]}%}"
 BLUE="%{${fg[blue]}%}"
@@ -14,8 +13,26 @@ CYAN="%{${fg[cyan]}%}"
 YELLOW="%{${fg[yellow]}%}"
 WHITE="%{${fg[white]}%}"
 
-PROMPT="${BLUE}%n${RESET}@%U%m%u%# "
-RPROMPT="${GREEN}%~${RESET} [${RED}%?${RESET}][%D %T]"
+# prompt git -----------------------------------------------------------
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "!"
+zstyle ':vcs_info:git:*' unstagedstr "+"
+zstyle ':vcs_info:git:*' formats '[%c%u%b]'
+zstyle ':vcs_info:git:*' actionformats '[%c%u%b|%a]'
+function _update_vcs_info_msg() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _update_vcs_info_msg
+
+# prompt ---------------------------------------------------------------
+PROMPT="${BLUE}%n${RESET}@%U%m%u ${GREEN}%~${RESET} %1v [${RED}%?${RESET}]
+%# "
 
 # alias ----------------------------------------------------------------
 case ${OSTYPE} in
@@ -132,7 +149,7 @@ setopt   hist_verify # ヒストリを呼び出してから実行する間に一
 setopt   share_history # 履歴を共有する
 
 # Options : Input/Output -----------------------------------------------
-unsetopt clobber # 上書きリダイレクトの禁止
+setopt   clobber # 上書きリダイレクトの禁止
 setopt   correct # コマンドのスペルチェックをする
 setopt   correct_all # コマンドライン全てのスペルチェックをする 
 setopt   ignore_eof # Ctrl+Dでログアウトしない(10回連続で打つとログアウトする)
