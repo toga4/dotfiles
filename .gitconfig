@@ -1,5 +1,7 @@
 [core]
     autocrlf = input
+    ignorecase = false
+    excludesfile = $HOME/.gitignore
 
 [alias]
     st = status
@@ -16,4 +18,4 @@
 [include]
     path = .gitconfig.os
     path = .gitconfig.user
-
+    path = .gitconfig.local
