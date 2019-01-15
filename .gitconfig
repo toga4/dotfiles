@@ -4,16 +4,28 @@
     excludesfile = $HOME/.gitignore
 
 [alias]
-    st = status
-    sts = status --short
+    st = status -u
+    sts = status -u --short
     ci = commit
     log1 = log --oneline
     br = branch
+    brl = for-each-ref refs/heads --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+    brr = for-each-ref refs/remotes/origin --sort=-committerdate --format='%(color:yellow)%(refname:lstrip=3)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
     df = diff
-    dc = diff --cached
+    dfs = diff --stat
+    dfc = diff --cached
+    dfcs = diff --stat --cached
+    dfsc = diff --stat --cached
+    dfw = diff --color-words='\\w+|[^[:space:]]'
     co = checkout
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    cp = cherry-pick
+    logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y-%m-%d %H:%M'
+    loga = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y-%m-%d %H:%M'
+    cob = !"git brl | fzf | awk '{print $1}' | xargs git checkout"
+    cobr = !"git brr | fzf | awk '{print $1}' | xargs git checkout"
+    push1 = !"git rev-parse --abbrev-ref HEAD | xargs git push -u origin"
+    open = !"git ls-remote --get-url origin | perl -pe 's;git@(.+):(.+)\\.git;https://$1:8000/$2;' | xargs start"
+    alias = !"git config -l | grep '^alias' | sort"
 
 [include]
     path = .gitconfig.os
