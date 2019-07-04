@@ -1,3 +1,5 @@
+[ -f ~/.zshrc.tmux ] && source ~/.zshrc.tmux
+
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
 
@@ -149,65 +151,13 @@ setopt   hist_verify # ヒストリを呼び出してから実行する間に一
 setopt   share_history # 履歴を共有する
 
 # Options : Input/Output -----------------------------------------------
-setopt   clobber # 上書きリダイレクトの禁止
+unsetopt   clobber # 上書きリダイレクトの禁止を解除
 setopt   correct # コマンドのスペルチェックをする
 setopt   correct_all # コマンドライン全てのスペルチェックをする 
 setopt   ignore_eof # Ctrl+Dでログアウトしない(10回連続で打つとログアウトする)
 
 # Options : Scripts and Functions --------------------------------------
 setopt   multios # 複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
-
-# 略語展開 -------------------------------------------------------------
-# vimのiabみたいな略語展開をする
-typeset -A abbreviations
-abbreviations=(
-    "i-test"	"verify -Dtest=TestNameDoNotMatch -DfailIfNoTests=false"
-)
-
-magic-abbrev-expand() {
-    local MATCH
-    LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9]#}
-    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
-    zle self-insert
-}
-
-no-magic-abbrev-expand() {
-    LBUFFER+=' '
-}
-
-zle -N magic-abbrev-expand
-zle -N no-magic-abbrev-expand
-bindkey " " magic-abbrev-expand
-bindkey "^x " no-magic-abbrev-expand
-
-# mvnの出力をカラー化 --------------------------------------------------
-# thanks to:  http://blog.blindgaenger.net/colorize_maven_output.html
-# and: http://johannes.jakeapp.com/blog/category/fun-with-linux/200901/maven-colorized
-# Colorize Maven Output
-alias maven='command mvn'
-function color_maven() {
-    local BLUE="[0;34m"
-    local RED="[0;31m"
-    local LIGHT_RED="[1;31m"
-    local LIGHT_GRAY="[0;37m"
-    local LIGHT_GREEN="[1;32m"
-    local LIGHT_BLUE="[1;34m"
-    local LIGHT_CYAN="[1;36m"
-    local YELLOW="[1;33m"
-    local WHITE="[1;37m"
-    local NO_COLOUR="[0m"
-    maven "$@" | sed \
-        -e "s/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/${LIGHT_GREEN}Tests run: \1$NO_COLOUR, Failures: $RED\2$NO_COLOUR, Errors: $YELLOW\3$NO_COLOUR, Skipped: $LIGHT_BLUE\4$NO_COLOUR/g" \
-        -e "s/\(\[\{0,1\}WARN\(ING\)\{0,1\}\]\{0,1\}.*\)/$YELLOW\1$NO_COLOUR/g" \
-        -e "s/\(\[ERROR\].*\)/$RED\1$NO_COLOUR/g" \
-        -e "s/\(\(BUILD \)\{0,1\}FAILURE.*\)/$RED\1$NO_COLOUR/g" \
-        -e "s/\(\(BUILD \)\{0,1\}SUCCESS.*\)/$LIGHT_GREEN\1$NO_COLOUR/g" \
-        -e "s/\(\[INFO\] [^-].*\)/$LIGHT_GRAY\1$NO_COLOUR/g" \
-        -e "s/\(\[INFO\] -.*\)/$LIGHT_GREEN\1$NO_COLOUR/g"
-    return $PIPESTATUS
-}
-
-alias mvn='color_maven'
 
 # functions
 function showoptions() {
@@ -216,5 +166,4 @@ function showoptions() {
 
 # .zshrc.local ---------------------------------------------------------
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-[ -f ~/.zshrc.tmux ] && source ~/.zshrc.tmux
 
