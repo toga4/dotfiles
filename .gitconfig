@@ -2,6 +2,8 @@
     autocrlf = input
     ignorecase = false
     excludesfile = $HOME/.gitignore
+    quotepath = false
+    pager=LC_ALL=ja_JP.UTF-8 less -Sx4
 
 [alias]
     st = status -u
@@ -24,7 +26,6 @@
     cob = !"git brl | fzf | awk '{print $1}' | xargs git checkout"
     cobr = !"git brr | fzf | awk '{print $1}' | xargs git checkout"
     push1 = !"git rev-parse --abbrev-ref HEAD | xargs git push -u origin"
-    open = !"git ls-remote --get-url origin | perl -pe 's;git@(.+):(.+)\\.git;https://$1:8000/$2;' | xargs start"
     alias = !"git config -l | grep '^alias' | sort"
 
 [include]
