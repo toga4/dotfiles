@@ -13,6 +13,8 @@ case ${OSTYPE} in
   cygwin*|msys*)
     ln -s $HOME/.dotfiles/.gitconfig.win $HOME/.gitconfig.os
     ;;
+  darwin*)
+    ln -s $CURRENTDIR/Brewfile $HOME/Brewfile
 esac
 
 mkdir -p $HOME/.vim/undo $HOME/.vim/tmp
