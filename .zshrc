@@ -171,3 +171,7 @@ function showoptions() {
 # .zshrc.local ---------------------------------------------------------
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/ttogashi/.sdkman"
+[[ -s "/Users/ttogashi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ttogashi/.sdkman/bin/sdkman-init.sh"
