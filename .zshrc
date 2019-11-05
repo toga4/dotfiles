@@ -62,6 +62,10 @@ else
   alias diff='diff -u'
 fi
 
+if [[ -x `which ghq` ]] && [[ -x `which fzf` ]]; then
+  alias cr='cd $(ghq root)/$(ghq list | fzf)'
+fi
+
 # key binding ----------------------------------------------------------
 bindkey -d
 bindkey -e
