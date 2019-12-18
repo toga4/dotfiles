@@ -174,7 +174,20 @@ function showoptions() {
 # .zshrc.local ---------------------------------------------------------
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/ttogashi/.sdkman"
 [[ -s "/Users/ttogashi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ttogashi/.sdkman/bin/sdkman-init.sh"
+
+eval "$(rbenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ttogashi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ttogashi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ttogashi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ttogashi/google-cloud-sdk/completion.zsh.inc'; fi
