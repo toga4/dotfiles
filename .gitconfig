@@ -31,3 +31,5 @@
     path = .gitconfig.os
     path = .gitconfig.user
     path = .gitconfig.local
+[hub]
+	protocol = git
