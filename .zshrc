@@ -2,6 +2,7 @@
 
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --extended --cycle --multi'
 
 # prompt colors --------------------------------------------------------
 autoload -Uz colors
@@ -75,6 +76,8 @@ bindkey "^[[3~" delete-char
 
 bindkey "^[^[[D" backward-word # Alt + <-
 bindkey "^[^[[C" forward-word # Alt + ->
+bindkey "^[[1~" beginning-of-line # Home
+bindkey "^[[4~" end-of-line # End
 
 # word移動の区切り文字を設定 -------------------------------------------
 autoload -Uz select-word-style
