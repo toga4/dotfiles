@@ -2,7 +2,19 @@
 
 CURRENTDIR=$(cd $(dirname $0); pwd)
 
-DOT_FILES=( .zshrc .zshrc.tmux .tmux.conf .tmux.conf.osx .tmux.conf.others .gitconfig .vimrc )
+DOT_FILES=(
+  .zshrc
+  .zshrc.alias
+  .zshrc.completion
+  .zshrc.options
+  .zshrc.prompt
+  .zshrc.tmux
+  .tmux.conf
+  .tmux.conf.osx
+  .tmux.conf.others
+  .gitconfig
+  .vimrc
+)
 
 for file in ${DOT_FILES[@]}
 do
