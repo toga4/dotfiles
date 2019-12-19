@@ -6,6 +6,7 @@ DOT_FILES=(
   .zshrc
   .zshrc.alias
   .zshrc.completion
+  .zshrc.functions
   .zshrc.options
   .zshrc.prompt
   .zshrc.tmux

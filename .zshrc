@@ -47,6 +47,7 @@ function history-all { history -E 1 }
 [ -f ~/.zshrc.completion ] && source ~/.zshrc.completion
 [ -f ~/.zshrc.options ] && source ~/.zshrc.options
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
+[ -f ~/.zshrc.functions ] && source ~/.zshrc.functions
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
