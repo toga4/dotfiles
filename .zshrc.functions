@@ -76,3 +76,11 @@ function dosh() {
     docker exec -it $container /bin/bash
 }
 
+function sdkuse() {
+    local candidate=$1
+    if [[ -z $candidate ]]; then
+        candidate=$(/bin/ls -1 ~/.sdkman/candidates | fzf)
+    fi
+    local version=$(/bin/ls -1 ~/.sdkman/candidates/$candidate | grep -v current | fzf)
+    sdk use $candidate $version
+}
