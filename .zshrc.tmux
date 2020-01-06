@@ -12,7 +12,7 @@ function tmux_automatically_attach_session()
     if is_screen_or_tmux_running; then
         ! is_exists 'tmux' && return 1
 
-        if is_tmux_runnning; then
+        if is_tmux_runnning && ! is_vscode_integrated; then
             echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
             echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
             echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
