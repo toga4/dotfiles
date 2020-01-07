@@ -1,5 +1,7 @@
 [ -f ~/.zshrc.tmux ] && source ~/.zshrc.tmux
 
+export PATH="$HOME/bin:$PATH"
+
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --extended --cycle --multi'
