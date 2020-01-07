@@ -16,6 +16,6 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 
 # prompt ---------------------------------------------------------------
-PROMPT='${BLUE}%n${RESET}@%U%m%u ${GREEN}%~${RESET} %1v[${RED}%?${RESET}]
+PROMPT='${GREEN}%~${RESET} %1v[${RED}%?${RESET}]
 %# '
 
