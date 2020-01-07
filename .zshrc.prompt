@@ -15,16 +15,7 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-# prompt kube ----------------------------------------------------------
-function _update_kube_info() {
-  unset _kube_prompt
-  [[ ! -x `which kubectl` ]] && return 1
-  local kube_prompt=$(kubectl config get-contexts | grep '^*' | awk '{ print $2 "/" $5 }')
-  [[ -n "${kube_prompt}" ]] && _kube_prompt="[${kube_prompt}] "
-}
-add-zsh-hook precmd _update_kube_info
-
 # prompt ---------------------------------------------------------------
-PROMPT='${BLUE}%n${RESET}@%U%m%u ${GREEN}%~${RESET} %1v${_kube_prompt}[${RED}%?${RESET}]
+PROMPT='${BLUE}%n${RESET}@%U%m%u ${GREEN}%~${RESET} %1v[${RED}%?${RESET}]
 %# '
 
