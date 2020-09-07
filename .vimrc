@@ -1,5 +1,5 @@
 syntax enable
-colorscheme elflord
+colorscheme anderson
 
 " 入力系
 set autoindent      " 自動でインデント
@@ -10,7 +10,7 @@ set shiftwidth=4    " Tabをスペース4つ分に変換
 " 表示系
 set number          " 行番号
 set cursorline      " 現在行をハイライト
-set cursorcolumn    " 現在列をハイライト
+"set cursorcolumn    " 現在列をハイライト
 set list            " 不可視文字を表示
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<,eol:< " 不可視文字の表示形式
 set tabstop=4       " Tabの表示幅はスペース4つ分
@@ -43,3 +43,9 @@ highlight CursorLine ctermbg=Black
 set backupdir=~/.vim/tmp
 set undodir=~/.vim/undo
 set viminfo+=n~/.vim/viminfo
+
+" キーバインド
+noremap <M-Left>  b
+noremap <M-Right> w
+noremap <ESC><ESC>^D b
+noremap <ESC><ESC>^C w

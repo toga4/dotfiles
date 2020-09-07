@@ -24,6 +24,9 @@ else
   alias diff='diff -u'
 fi
 
+# k9s
+alias k9s='LANG=en_US.UTF-8 k9s'
+
 # fzf ------------------------------------------------------------------
 if [[ -x `which ghq` ]] && [[ -x `which fzf` ]]; then
   function cr() {

@@ -36,6 +36,7 @@ setopt   clobber # 上書きリダイレクトの禁止を解除
 setopt   correct # コマンドのスペルチェックをする
 setopt   correct_all # コマンドライン全てのスペルチェックをする 
 setopt   ignore_eof # Ctrl+Dでログアウトしない(10回連続で打つとログアウトする)
+setopt   interactivecomments # コマンドラインでも "#" でコメントアウト可能にする
 
 # Scripts and Functions --------------------------------------
 setopt   multios # 複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる

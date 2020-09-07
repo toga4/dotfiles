@@ -1,0 +1,8 @@
+#!/bin/bash -eu
+
+if [[ ! -x `which gcloud` ]]; then
+    exit 1
+fi
+
+gcloud config get-value project 2>/dev/null
+

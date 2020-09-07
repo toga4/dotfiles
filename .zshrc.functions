@@ -23,15 +23,9 @@ function ghq-new() {
     cd $(ghq root)/$REPOPATH
 
     rm -rf $TMPREPODIR
-} 
-
-function ghq-get() {
-    local url=$(hub api 'user/repos?per_page=100&affiliation=owner' | jq -r 'map(select(.archived != true)) | .[].full_name' | fzf)
-    [[ -z $url ]] && return 1
-    ghq get -p $url
 }
 
-function ghq-get-org() {
+function ghq-get() {
     local url=$(hub api 'user/repos?per_page=100&affiliation=organization_member' | jq -r 'map(select(.archived != true)) | .[].full_name' | fzf)
     [[ -z $url ]] && return 1
     ghq get -p $url
@@ -47,11 +41,13 @@ function fpod() {
 }
 
 function kush() {
+    local shell=${1:-"bash"}
     local pod=($(fpod -n))
     [[ -z $pod ]] && return 1
     local container=$(kubectl get pods/${pod[2]} -n ${pod[1]} -o jsonpath="{.spec.containers[*].name}" | tr -s '[[:space:]]' '\n' | fzf --select-1 --exit-0)
     [[ -z $container ]] && return 1
-    kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container /bin/bash
+    echo kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container $shell 1>&2
+    kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container $shell
 }
 
 function klog() {
@@ -59,6 +55,7 @@ function klog() {
     [[ -z $pod ]] && return 1
     local container=$(kubectl get pods/${pod[2]} -n ${pod[1]} -o jsonpath="{.spec.containers[*].name}" | tr -s '[[:space:]]' '\n' | fzf --select-1 --exit-0)
     [[ -z $container ]] && return 1
+    echo kubectl logs ${@} -n ${pod[1]} ${pod[2]} -c $container 1>&2
     kubectl logs ${@} -n ${pod[1]} ${pod[2]} -c $container
 }
 

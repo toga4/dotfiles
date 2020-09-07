@@ -16,6 +16,7 @@ DOT_FILES=(
   .tmux.conf.others
   .gitconfig
   .vimrc
+  .vim/colors/anderson.vim
 )
 
 # create symbolic links
