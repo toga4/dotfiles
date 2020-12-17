@@ -34,3 +34,5 @@
     path = .gitconfig.local
 [hub]
 	protocol = git
+[pull]
+    ff = only

@@ -19,6 +19,9 @@ DOT_FILES=(
   .vim/colors/anderson.vim
 )
 
+# Vim
+mkdir -p $HOME/.vim/{undo,tmp,colors}
+
 # create symbolic links
 for file in ${DOT_FILES[@]}
 do
@@ -35,7 +38,4 @@ case ${OSTYPE} in
     ln -sf $CURRENTDIR/Brewfile $HOME/Brewfile
     ;;
 esac
-
-# Vim
-mkdir -p $HOME/.vim/undo $HOME/.vim/tmp
 
