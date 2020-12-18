@@ -26,7 +26,7 @@ mkdir -p $HOME/.vim/{undo,tmp,colors}
 # create symbolic links
 for file in ${DOT_FILES[@]}
 do
-    ln -sf $CURRENTDIR/$file $HOME/$file
+    ln -sfh $CURRENTDIR/$file $HOME/$file
 done
 
 case ${OSTYPE} in
