@@ -11,6 +11,7 @@ DOT_FILES=(
   .zshrc.options
   .zshrc.prompt
   .zshrc.tmux
+  .zshrc.tools
   .tmux.conf
   .tmux.conf.osx
   .tmux.conf.others

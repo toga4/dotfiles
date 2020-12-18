@@ -50,7 +50,6 @@ function history-all { history -E 1 }
 [ -f ~/.zshrc.options ] && source ~/.zshrc.options
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
 [ -f ~/.zshrc.functions ] && source ~/.zshrc.functions
+[ -f ~/.zshrc.tools ] && source ~/.zshrc.tools
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
