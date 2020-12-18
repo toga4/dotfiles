@@ -18,10 +18,11 @@
     dfcs = diff --stat --cached
     dfsc = diff --stat --cached
     dfw = diff --color-words='\\w+|[^[:space:]]'
+    dfcw = diff --cached --color-words='\\w+|[^[:space:]]'
     co = checkout
     cp = cherry-pick
-    logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y-%m-%d %H:%M'
-    loga = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y-%m-%d %H:%M'
+    logg = log --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %C(green)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y-%m-%d %H:%M'
+    loga = log --all --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %C(green)(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y-%m-%d %H:%M'
     cob = !"git brl | fzf | awk '{print $1}' | xargs git checkout"
     cobr = !"git brr | fzf | awk '{print $1}' | xargs git checkout"
     push1 = !"git rev-parse --abbrev-ref HEAD | xargs git push -u origin"
@@ -33,6 +34,7 @@
     path = .gitconfig.user
     path = .gitconfig.local
 [hub]
-	protocol = git
+    protocol = git
 [pull]
     ff = only
+    rebase = false
