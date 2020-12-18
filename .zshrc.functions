@@ -26,7 +26,7 @@ function ghq-new() {
 }
 
 function ghq-get() {
-    local url=$(hub api 'user/repos?per_page=100&affiliation=organization_member' | jq -r 'map(select(.archived != true)) | .[].full_name' | fzf)
+    local url=$(hub api 'user/repos?per_page=100&affiliation=owner,collabolator,organization_member' | jq -r 'map(select(.archived != true)) | .[].full_name' | fzf)
     [[ -z $url ]] && return 1
     ghq get -p $url
 }
