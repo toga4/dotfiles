@@ -38,3 +38,12 @@
 [pull]
     ff = only
     rebase = false
+
+[merge]
+    tool = vscode
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "vscode"]
+    cmd = '/usr/local/bin/code' \"$MERGED\"
+    trustExitCode = false
