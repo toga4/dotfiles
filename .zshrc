@@ -19,12 +19,6 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 ########################################################################
-# functions
-########################################################################
-fpath=(~/zsh/functions $fpath)
-autoload -Uz $(\ls -1 ~/zsh/functions)
-
-########################################################################
 # prompt
 ########################################################################
 autoload -Uz colors
@@ -205,9 +199,14 @@ alias k9s='LANG=en_US.UTF-8 k9s'
 ########################################################################
 # others
 ########################################################################
+typeset -Ug fpath path PATH
+
 export PATH="$HOME/bin.local:$HOME/bin:$PATH"
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
+
+fpath=(~/zsh/functions $fpath)
+autoload -Uz $(\ls -1 ~/zsh/functions)
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
