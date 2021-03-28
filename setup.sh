@@ -7,7 +7,6 @@ DOT_FILES=(
   .zshrc
   .tmux.conf
   .tmux.conf.osx
-  .tmux.conf.others
   .gitconfig
   .vimrc
   .vim/colors/anderson.vim
@@ -23,10 +22,6 @@ do
 done
 
 case ${OSTYPE} in
-  cygwin*|msys*)
-    # for Windows
-    ln -sf $HOME/.dotfiles/.gitconfig.win $HOME/.gitconfig.os
-    ;;
   darwin*)
     # for MacOSX
     ln -sf $CURRENTDIR/Brewfile $HOME/Brewfile
