@@ -1,0 +1,4 @@
+# change repository
+local repoDir=$(ghq list | fzf --preview 'ls -AlFh $(ghq root)/{}')
+[[ -z $repoDir ]] && return 1
+cd $(ghq root)/$repoDir

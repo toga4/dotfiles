@@ -5,13 +5,6 @@ CURRENTDIR=$(cd $(dirname $0); pwd)
 DOT_FILES=(
   bin
   .zshrc
-  .zshrc.alias
-  .zshrc.completion
-  .zshrc.functions
-  .zshrc.options
-  .zshrc.prompt
-  .zshrc.tmux
-  .zshrc.tools
   .tmux.conf
   .tmux.conf.osx
   .tmux.conf.others

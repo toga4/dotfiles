@@ -1,0 +1,1 @@
+docker container ls $@ --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Names}}" | tail -n +2 | fzf --multi | awk '{print $1}'

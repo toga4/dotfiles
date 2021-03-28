@@ -1,0 +1,6 @@
+local row=$(kubectl get pods --all-namespaces --no-headers | fzf)
+if [[ "-n" = "$1" ]]; then
+    echo ${row} | awk '{print $1 " " $2}'
+else
+    echo ${row} | awk '{print $2}'
+fi

@@ -1,0 +1,8 @@
+local name=$1
+if [[ -z $name ]]; then
+    echo "Usage: mkwork <dirname>" >&2
+    return 1
+fi
+local dir=${WORK_ROOT_DIR:=~/work}/$(date "+%Y%m%d")_${name}
+mkdir -p ${dir}
+cd ${dir}

@@ -1,0 +1,4 @@
+local baseDir=${WORK_ROOT_DIR:=~/work}
+local targetDir=$(/bin/ls -1 $baseDir | grep -v -F ".DS_Store" | fzf --no-multi --tac --preview "ls -AlFh $baseDir/{}")
+[ -z "$targetDir" ] && return 130
+cd ${baseDir}/${targetDir}
