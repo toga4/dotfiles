@@ -201,7 +201,7 @@ alias k9s='LANG=en_US.UTF-8 k9s'
 ########################################################################
 typeset -Ug fpath path PATH
 
-export PATH="$HOME/bin.local:$HOME/bin:$PATH"
+export PATH="$HOME/bin.local:$HOME/bin:/usr/local/sbin:$PATH"
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
 
