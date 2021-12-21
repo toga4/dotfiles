@@ -1,0 +1,4 @@
+local config=$(gcloud config configurations list | fzf --header-lines=1 | awk '{print $1}')
+[[ -z $config ]] && return 1
+gcloud config configurations activate $config
+
