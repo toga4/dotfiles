@@ -218,4 +218,3 @@ export PATH="$PATH:${GOPATH}/bin"
 
 # asdf
 source $(brew --prefix asdf)/asdf.sh
-[ -f ~/.asdf/plugins/java/set-java-home.zsh ] && source ~/.asdf/plugins/java/set-java-home.zsh
