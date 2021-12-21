@@ -17,6 +17,7 @@ bundle:
 install:
 	grep -qF "source ~/.zshrc.custom" .zshrc || echo '[[ -f ~/.zshrc.custom ]] && source ~/.zshrc.custom' >> ~/.zshrc
 	test -f ~/.zshrc.custom || ln -s $(PWD)/.zshrc ~/.zshrc.custom
+	mkdir -p ~/zsh
 	test -d ~/zsh/functions || ln -s $(PWD)/zsh-functions ~/zsh/functions
 	test -d ~/bin || ln -s $(PWD)/bin ~/bin
 	test -f ~/.gitconfig || ln -s $(PWD)/.gitconfig ~/.gitconfig
