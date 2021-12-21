@@ -47,3 +47,5 @@
 [mergetool "vscode"]
     cmd = '/usr/local/bin/code' \"$MERGED\"
     trustExitCode = false
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
