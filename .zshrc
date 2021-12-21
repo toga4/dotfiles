@@ -212,13 +212,12 @@ autoload -Uz $(\ls -1 ~/zsh/functions)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --extended --cycle --multi'
 
-# golang
-export GOPATH=$(go env GOPATH)
-export PATH="$PATH:${GOPATH}/bin"
-
 # asdf
 source $(brew --prefix asdf)/asdf.sh
 
+# golang
+export GOPATH=$(go env GOPATH)
+export PATH="$PATH:${GOPATH}/bin"
 
 ########################################################################
 # plugins
