@@ -74,7 +74,7 @@ zstyle ':zle:*' word-style unspecified
 ########################################################################
 # Completion
 ########################################################################
-fpath=(~/.zsh-completions/src $fpath)
+fpath=(~/zsh/completions $fpath)
 autoload -U compinit;
 compinit -u
 
