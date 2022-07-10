@@ -15,7 +15,7 @@ bundle:
 	brew bundle --no-lock --file Brewfile
 
 install:
-	grep -qF "source ~/.zshrc.custom" .zshrc || echo '[[ -f ~/.zshrc.custom ]] && source ~/.zshrc.custom' >> ~/.zshrc
+	grep -qF "source ~/.zshrc.custom" ~/.zshrc || echo '[[ -f ~/.zshrc.custom ]] && source ~/.zshrc.custom' >> ~/.zshrc
 	test -f ~/.zshrc.custom || ln -s $(PWD)/.zshrc ~/.zshrc.custom
 	mkdir -p ~/zsh
 	test -d ~/zsh/functions || ln -s $(PWD)/zsh-functions ~/zsh/functions
