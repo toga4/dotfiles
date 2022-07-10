@@ -1,3 +1,8 @@
+export PATH="$HOME/bin.local:$HOME/bin:/usr/local/sbin:$PATH"
+
+########################################################################
+# tmux
+########################################################################
 function tmux_automatically_attach_session()
 {
   # skip if tmux is not installed
@@ -60,6 +65,8 @@ bindkey -e
 bindkey "^[[Z" reverse-menu-complete # 逆補完
 bindkey "^[[3~" delete-char
 
+bindkey "^[[1;3D" backward-word # Alt + <-
+bindkey "^[[1;3C" forward-word # Alt + ->
 bindkey "^[^[[D" backward-word # Alt + <-
 bindkey "^[^[[C" forward-word # Alt + ->
 bindkey "^[[1~" beginning-of-line # Home
@@ -160,7 +167,9 @@ function showoptions() {
 ########################################################################
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
-export SAVEHIST=100000
+export SAVEHIST=1000000
+
+export HISTORY_IGNORE="cd|cr|cdwork|mkwork|mkdir|rm|mv|cp|ll|vim|less|view|code|exit|which|whence|where|history"
 
 # 全履歴表示
 function history-all { history -E 1 }
@@ -201,7 +210,6 @@ alias k9s='LANG=en_US.UTF-8 k9s'
 ########################################################################
 typeset -Ug fpath path PATH
 
-export PATH="$HOME/bin.local:$HOME/bin:/usr/local/sbin:$PATH"
 export EDITOR='vim'
 export LESS='-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS'
 
@@ -239,3 +247,4 @@ autoload -Uz _zinit
 # Two regular plugins loaded without investigating.
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+
