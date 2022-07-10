@@ -1,4 +1,5 @@
 export PATH="$HOME/bin.local:$HOME/bin:/usr/local/sbin:$PATH"
+export XDG_CONFIG_HOME=~/.config
 
 ########################################################################
 # tmux
