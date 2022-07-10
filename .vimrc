@@ -1,5 +1,6 @@
 syntax enable
-colorscheme anderson
+let g:seoul256_srgb = 1
+colorscheme seoul256
 
 set termguicolors
 " $TERMがxterm以外のときは以下を設定する必要がある。
@@ -39,10 +40,17 @@ set history=2000    " コマンド履歴数
 set noswapfile      " スワップファイルを作らない
 set backspace=indent,eol,start  " バックスペースでなんでも消せる
 set autoread        " 他で書き換えられたら自動で再読み込み
+set undofile        " undoの永続化
 
 " 現在行ハイライトの色指定
 highlight clear CursorLine
-highlight CursorLine ctermbg=Black
+highlight CursorLine ctermbg=Black guibg=Black
+
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
 
 " バックアップファイル
 set backupdir=~/.vim/tmp

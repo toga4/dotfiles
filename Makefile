@@ -24,6 +24,7 @@ install:
 	test -f ~/.tmux.conf || ln -s $(PWD)/.tmux.conf ~/.tmux.conf
 	test -f ~/.tmux.conf.osx || ln -s $(PWD)/.tmux.conf.osx ~/.tmux.conf.osx
 	mkdir -p ~/.vim/{undo,tmp,colors}
+	curl -s https://raw.githubusercontent.com/junegunn/seoul256.vim/master/colors/seoul256.vim -o ~/.vim/colors/seoul256.vim
 	test -f ~/.vim/colors/anderson.vim || ln -s $(PWD)/.vim/colors/anderson.vim ~/.vim/colors/anderson.vim
 	test -f ~/.vimrc || ln -s $(PWD)/.vimrc ~/.vimrc
 
@@ -35,4 +36,5 @@ clean:
 	rm -f ~/.tmux.conf
 	rm -f ~/.tmux.conf.osx
 	rm -f ~/.vim/colors/anderson.vim
+	rm -f ~/.vim/colors/seoul256.vim
 	rm -f ~/.vimrc
