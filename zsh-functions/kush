@@ -5,5 +5,5 @@ local pod=($(fpod -n))
 local container=$(kubectl get pods/${pod[2]} -n ${pod[1]} -o jsonpath="{.spec.containers[*].name}" | tr -s '[[:space:]]' '\n' | fzf --select-1 --exit-0)
 [[ -z $container ]] && return 1
 
-echo kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container $shell 1>&2
-kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container $shell
+echo kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container -- $shell 1>&2
+kubectl exec -n ${pod[1]} -it ${pod[2]} -c $container -- $shell
