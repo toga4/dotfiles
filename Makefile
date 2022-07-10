@@ -27,6 +27,7 @@ install:
 	curl -s https://raw.githubusercontent.com/junegunn/seoul256.vim/master/colors/seoul256.vim -o ~/.vim/colors/seoul256.vim
 	test -f ~/.vim/colors/anderson.vim || ln -s $(PWD)/.vim/colors/anderson.vim ~/.vim/colors/anderson.vim
 	test -f ~/.vimrc || ln -s $(PWD)/.vimrc ~/.vimrc
+	test -f ~/.alacritty.yml || ln -s $(PWD)/.alacritty.yml ~/.alacritty.yml
 
 clean:
 	rm -f ~/.zshrc.custom
@@ -38,3 +39,4 @@ clean:
 	rm -f ~/.vim/colors/anderson.vim
 	rm -f ~/.vim/colors/seoul256.vim
 	rm -f ~/.vimrc
+	rm -f ~/.alacritty.yml
