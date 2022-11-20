@@ -205,6 +205,8 @@ fi
 
 # k9s
 alias k9s='LANG=en_US.UTF-8 k9s'
+# tig
+alias tig='TERM=xterm-256color tig'
 
 ########################################################################
 # others
