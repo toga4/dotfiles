@@ -1,3 +1,4 @@
+local shell=${1:-"bash"}
 local container=$(fcon)
 [[ -z $container ]] && return 1
-docker exec -it $container /bin/bash
+docker exec -it $container $shell
