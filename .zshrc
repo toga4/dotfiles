@@ -166,11 +166,18 @@ function showoptions() {
 ########################################################################
 # history
 ########################################################################
-export HISTFILE=~/.zsh_history
-export HISTSIZE=100000
-export SAVEHIST=1000000
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
 
-export HISTORY_IGNORE="cd|cr|cdwork|mkwork|mkdir|rm|mv|cp|ll|vim|less|view|code|exit|which|whence|where|history"
+########################################################################
+# history
+########################################################################
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+
+export HISTORY_IGNORE="(cd|cr|cdwork|mkwork|mkdir|rm|mv|cp|ll|vim|less|view|code|exit|which|whence|where|history)"
 
 # 全履歴表示
 function history-all { history -E 1 }
@@ -224,7 +231,7 @@ autoload -Uz $(\ls -1 ~/zsh/functions)
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --extended --cycle --multi'
 
 # asdf
-source $(brew --prefix asdf)/asdf.sh
+[ -f $(brew --prefix asdf)/libexec/asdf.sh ] && source $(brew --prefix asdf)/libexec/asdf.sh
 
 # golang
 export GOPATH=$(go env GOPATH)

@@ -28,24 +28,26 @@
     push1 = !"git rev-parse --abbrev-ref HEAD | xargs git push -u origin"
     addf = !"git status -u -s | awk '{print $2}' | fzf -m | xargs git add"
     alias = !"git config -l | grep '^alias' | sort"
+    fixup = !"git log1 | fzf | awk '{print $1}' | xargs -I {} git commit --fixup={}"
 
 [include]
     path = .gitconfig.os
     path = .gitconfig.user
     path = .gitconfig.local
+
 [hub]
     protocol = git
+
 [pull]
     ff = only
     rebase = false
 
-[merge]
-    tool = vscode
-[mergetool]
-    prompt = false
-    keepBackup = false
-[mergetool "vscode"]
-    cmd = '/usr/local/bin/code' \"$MERGED\"
-    trustExitCode = false
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
+
+[rebase]
+	autoStash = true
+	autoSquash = true
+
+[init]
+	defaultBranch = main
