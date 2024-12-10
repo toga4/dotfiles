@@ -230,8 +230,11 @@ autoload -Uz $(\ls -1 ~/zsh/functions)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --extended --cycle --multi'
 
-# asdf
-[ -f $(brew --prefix asdf)/libexec/asdf.sh ] && source $(brew --prefix asdf)/libexec/asdf.sh
+# mise
+type mise >/dev/null && eval "$(mise activate zsh)"
+
+# atuin
+type atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 
 # golang
 export GOPATH=$(go env GOPATH)
