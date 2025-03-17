@@ -30,14 +30,6 @@
     alias = !"git config -l | grep '^alias' | sort"
     fixup = !"git log1 | fzf | awk '{print $1}' | xargs -I {} git commit --fixup={}"
 
-[include]
-    path = .gitconfig.os
-    path = .gitconfig.user
-    path = .gitconfig.local
-
-[hub]
-    protocol = git
-
 [pull]
     ff = only
     rebase = false
@@ -51,3 +43,10 @@
 
 [init]
 	defaultBranch = main
+
+[user]
+	name = toga4
+	email = 81744248+toga4@users.noreply.github.com
+
+[include]
+    path = config.local
