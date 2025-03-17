@@ -1,4 +1,5 @@
 font-family = HackGen
 font-size = 12
+font-thicken = true
 theme = Tomorrow Night Eighties
 background-opacity = 0.9
