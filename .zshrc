@@ -64,10 +64,23 @@ function _update_vcs_info_msg() {
   psvar=()
   LANG=en_US.UTF-8 vcs_info
   [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="${vcs_info_msg_0_} "
+
+  # display git repository path in red if in git repository
+  local git_toplevel
+  git_toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [[ -n "$git_toplevel" ]]; then
+    local toplevel_display="${git_toplevel/#$HOME/~}"
+    local cwd_display="${PWD/#$HOME/~}"
+    psvar[2]="$toplevel_display"
+    psvar[3]="${cwd_display#$toplevel_display}"
+  else
+    psvar[2]="${PWD/#$HOME/~}"
+    psvar[3]=""
+  fi
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-PROMPT='${GREEN}%~${RESET} %1v[${RED}%?${RESET}]
+PROMPT='${GREEN}%2v${RED}%3v${RESET} %1v[${RED}%?${RESET}]
 %# '
 
 ########################################################################
