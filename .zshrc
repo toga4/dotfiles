@@ -1,5 +1,7 @@
 export PATH="$HOME/bin.local:$HOME/bin:/usr/local/sbin:$PATH"
 export XDG_CONFIG_HOME=~/.config
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
 
 ########################################################################
 # tmux
@@ -8,14 +10,25 @@ function tmux_automatically_attach_session()
 {
   # skip if tmux is not installed
   [[ ! -x `which tmux` ]] && echo "tmux is not installed" && return 1
+
+  # attach tmux session if terminal program is VSCode
+  if [[ $TERM_PROGRAM = "vscode" ]]; then
+      # use directory name as session name
+      SESSION_NAME=$(pwd | tr '.' '_')
+      if $(tmux list-sessions -F '#{session_name}' | grep -qE "^${SESSION_NAME}$"); then
+          # attach session if exists
+          tmux attach -t ${SESSION_NAME}
+      else
+          # create new session if not exists
+          tmux new-session -s ${SESSION_NAME}
+      fi
+  fi
+
   # skip if shell level != 1
   [[ $SHLVL != "1" ]] && return 0
-  # skip if terminal on vscode
-  [[ $TERM_PROGRAM = "vscode" ]] && return 0
   # skip if shell is not running interactively
   [[ -z $PS1 ]] && return 0
 
-  # tmux attach が少し遅いので list-sessions する
   if $(tmux list-sessions > /dev/null 2>&1); then
     tmux attach
   else
@@ -82,7 +95,7 @@ zstyle ':zle:*' word-style unspecified
 ########################################################################
 # Completion
 ########################################################################
-fpath=(~/zsh/completions $fpath)
+fpath=(~/zsh/completions /opt/homebrew/share/zsh/site-functions $fpath)
 autoload -U compinit;
 compinit -u
 

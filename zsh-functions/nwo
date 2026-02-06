@@ -1,0 +1,3 @@
+dir=$(nw $@)
+[[ -z $dir ]] && return 1
+${EDITOR_IDE:-code} $dir

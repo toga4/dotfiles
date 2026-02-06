@@ -1,0 +1,4 @@
+local worktreeDir=$(git worktree list | fzf --preview 'ls -AlFh {1}' | awk '{print $1}')
+[[ -z $worktreeDir ]] && return 1
+cd $worktreeDir
+

@@ -1,0 +1,12 @@
+local branch=${1:-$(git brls)}
+if [[ -z $branch ]]; then
+    return 1
+fi
+
+local dir=$(git worktree list | grep -F "[${branch}]" | awk '{print $1}')
+if [[ -z $dir ]]; then
+    dir="${HOME}/worktrees/$(git worktree list | head -n 1 | awk '{print $1}' | perl -pe "s;$(ghq root)/;;")/${branch}"
+    git worktree add ${dir} >&2
+fi
+
+echo ${dir}

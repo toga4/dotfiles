@@ -1,19 +1,19 @@
-pmset -g log | grep -E 'Display is turned' | gawk '
+pmset -g log | grep -E 'Display is turned on|Clamshell Sleep' | gawk '
 /Display is turned on/{
-  on_time=$1" "$2;
-  on_sec=mktime(gensub(/[-:+]/," ","g",$1" "$2))
+  if (!on_time) {
+    on_time=$1" "$2;
+    on_sec=mktime(gensub(/[-:+]/," ","g",$1" "$2))
+  }
   if (off_time) {
-    duration = on_sec - off_sec;
-    print "\033[38;5;241m"strftime("%m/%d %H:%M", off_sec), "-", strftime("%H:%M", on_sec), "->", strftime("%H:%M:%S", duration, 1), "\033[0m";
     off_time=""
   }
 }
-/Display is turned off/{
+/Clamshell Sleep/{
   off_time=$1" "$2;
   off_sec=mktime(gensub(/[-:+]/," ","g",$1" "$2));
   if (on_time) {
     duration = off_sec - on_sec;
-    print strftime("%m/%d %H:%M", on_sec), "-", strftime("%H:%M", off_sec), "->", strftime("%H:%M:%S", duration, 1);
+    print strftime("%m/%d %H:%M", on_sec), strftime("%H:%M", off_sec), strftime("%H:%M:%S", duration, 1);
     on_time=""
   }
 }'

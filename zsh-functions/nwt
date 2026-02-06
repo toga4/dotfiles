@@ -1,0 +1,5 @@
+dir=$(nw $@)
+[[ -z $dir ]] && return 1
+session_name=${dir//./_}
+tmux new-session -d -s $session_name -c $dir
+tmux switch-client -t $session_name

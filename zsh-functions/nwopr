@@ -1,0 +1,4 @@
+local pr=${1:-$(gh pr list | fzf | awk '{print $1}')}
+[[ -z $pr ]] && return 1
+local branch=$(gh pr view $pr --json headRefName -q '.headRefName')
+${EDITOR_IDE:-code} $(nw $branch)
