@@ -68,7 +68,7 @@ function _update_vcs_info_msg() {
   # display git repository path in red if in git repository
   local git_toplevel
   git_toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
-  if [[ -n "$git_toplevel" ]]; then
+  if [[ -n "$git_toplevel" && "$PWD" == "$git_toplevel"* ]]; then
     local toplevel_display="${git_toplevel/#$HOME/~}"
     local cwd_display="${PWD/#$HOME/~}"
     psvar[2]="$toplevel_display"
