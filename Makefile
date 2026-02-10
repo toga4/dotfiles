@@ -27,11 +27,11 @@ install:
 	test -f ~/.vim/colors/anderson.vim || ln -s $(PWD)/.vim/colors/anderson.vim ~/.vim/colors/anderson.vim
 	test -f ~/.vimrc || ln -s $(PWD)/.vimrc ~/.vimrc
 	# XDG_CONFIG_DIR
-	mkdir -p .config/git
+	mkdir -p ~/.config/git
 	test -f ~/.config/git/config || ln -s $(PWD)/.config/git/config ~/.config/git/config
-	mkdir -p .config/tmux
+	mkdir -p ~/.config/tmux
 	test -f ~/.config/tmux/tmux.conf || ln -s $(PWD)/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
-	mkdir -p .config/ghostty
+	mkdir -p ~/.config/ghostty
 	test -f ~/.config/ghostty/config || ln -s $(PWD)/.config/ghostty/config ~/.config/ghostty/config
 
 clean:
